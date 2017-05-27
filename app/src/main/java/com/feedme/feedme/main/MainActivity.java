@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
 
         unbinder = ButterKnife.bind(this);
 
-        //((FeedmeBaseApplication) getApplicationContext())
-        //        .createMainComponent(this).inject(this);
+        ((FeedmeBaseApplication) getApplicationContext())
+                .createMainComponent(this).inject(this);
     }
 }

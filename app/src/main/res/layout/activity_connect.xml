@@ -10,6 +10,6 @@
         android:layout_gravity="center"
         android:gravity="center"
         android:textSize="35dp"
-        android:text="Main" />
+        android:text="Connect" />
 
 </LinearLayout>

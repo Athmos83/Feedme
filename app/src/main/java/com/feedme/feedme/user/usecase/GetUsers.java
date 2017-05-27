@@ -6,6 +6,8 @@ import com.feedme.feedme.user.repository.UserPersistence;
 
 import java.util.List;
 
+import io.reactivex.Observable;
+
 /**
  * Created by Athmos on 26/05/2017.
  */
@@ -18,8 +20,8 @@ public class GetUsers {
         this.dataRepository = dataRepository;
     }
 
-    public void execute(final List<User> users, final GetUsersListener listener) {
-        dataRepository.getUser(listener);
+    public Observable<List<User>> execute() {
+        return dataRepository.getUser();
     }
 
     //  TODO implementer dans ConnexionPresenter

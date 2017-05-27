@@ -1,13 +1,8 @@
 package com.feedme.feedme.common.injection.modules;
 
-import android.app.Application;
-
 import com.feedme.feedme.common.repository.DataRepository;
 import com.feedme.feedme.common.repository.PersistenceRepository;
 import com.feedme.feedme.user.repository.UserPersistence;
-import com.feedme.feedme.user.repository.UserPersistenceContract;
-
-import java.util.List;
 
 import javax.inject.Singleton;
 

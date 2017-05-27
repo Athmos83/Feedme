@@ -20,6 +20,7 @@ public class AppModule {
 
     public AppModule(Application application) {
         this.application = application;
+        initRealm();
     }
 
     @Provides

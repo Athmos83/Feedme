@@ -1,12 +1,15 @@
 package com.feedme.feedme.splash.views.activity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import com.feedme.feedme.FeedmeBaseApplication;
 import com.feedme.feedme.R;
 import com.feedme.feedme.common.view.HockeyAppBaseActivity;
+import com.feedme.feedme.connexion.views.activity.ConnexionActivity;
+import com.feedme.feedme.main.MainActivity;
 import com.feedme.feedme.splash.views.presenter.SplashPresenter;
 
 import javax.inject.Inject;
@@ -21,7 +24,7 @@ import butterknife.Unbinder;
 public class SplashActivity extends AppCompatActivity implements SplashPresenter.View {
 
     @Inject
-    SplashPresenter slashPresenter;
+    SplashPresenter splashPresenter;
 
     private Unbinder unbinder;
 
@@ -34,6 +37,7 @@ public class SplashActivity extends AppCompatActivity implements SplashPresenter
 
         ((FeedmeBaseApplication) getApplicationContext())
                .createSplashComponent(this).inject(this);
+        splashPresenter.init();
     }
 
     @Override
@@ -43,7 +47,14 @@ public class SplashActivity extends AppCompatActivity implements SplashPresenter
     }
 
     @Override
-    public void onLaunchApp() {
+    public void navigateToConnexion() {
+        Intent intent = new Intent(this, ConnexionActivity.class);
+        startActivity(intent);
+    }
 
+    @Override
+    public void navigateToMain() {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 }

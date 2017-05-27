@@ -23,7 +23,7 @@ public class ConnexionActivity extends Activity implements ConnexionPresenter.Vi
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_connect);
 
         unbinder = ButterKnife.bind(this);
 

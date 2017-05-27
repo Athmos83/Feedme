@@ -8,6 +8,10 @@ import com.feedme.feedme.user.usecase.GetUsers.GetUsersListener;
 
 import java.util.List;
 
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.annotations.NonNull;
+import io.reactivex.functions.Consumer;
+
 /**
  * Created by Athmos on 26/05/2017.
  */
@@ -24,12 +28,31 @@ public class SplashPresenter implements GetUsersListener {
         this.getUsers = getUsers;
     }
 
+    public void init() {
+        getUsers();
+    }
+
+
+    public void getUsers() {
+        getUsers.execute().subscribeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<List<User>>() {
+                    @Override
+                    public void accept(@NonNull List<User> users) throws Exception {
+                        onGetUsers(users);
+                    }
+                });
+    }
+
     @Override
     public void onGetUsers(List<User> users) {
-
+        if (!users.isEmpty())
+            splashView.navigateToMain();
+        splashView.navigateToConnexion();
     }
 
     public interface View {
-        void onLaunchApp();
+        void navigateToConnexion();
+
+        void navigateToMain();
     }
 }
