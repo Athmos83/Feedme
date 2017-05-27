@@ -1,6 +1,7 @@
 package com.feedme.feedme;
 
 import android.app.Application;
+import android.content.Context;
 
 import com.feedme.feedme.common.injection.components.ApplicationComponent;
 import com.feedme.feedme.common.injection.components.BaseActivityComponent;
@@ -13,12 +14,15 @@ import com.feedme.feedme.main.injection.modules.MainModule;
 import com.feedme.feedme.splash.injection.components.SplashSubComponent;
 import com.feedme.feedme.splash.injection.modules.SplashModule;
 import com.feedme.feedme.splash.views.activity.SplashActivity;
+import com.feedme.feedme.splash.views.presenter.SplashPresenter;
+import com.feedme.feedme.user.injection.modules.UserModule;
+
 
 /**
  * Created by Athmos on 26/05/2017.
  */
 
-public class FeedmeBaseApplication extends Application {
+public abstract class FeedmeBaseApplication extends Application {
     protected ApplicationComponent applicationComponent;
 
     protected BaseActivityComponent currentActivityComponent;
@@ -50,9 +54,9 @@ public class FeedmeBaseApplication extends Application {
         return connexionSubComponent;
     }
 
-    public SplashSubComponent createSplashComponent(SplashActivity splashActivity) {
-        SplashSubComponent splashSubComponent = applicationComponent.ge(
-                new SplashModule(splashActivity));
+    public SplashSubComponent createSplashComponent(SplashPresenter.View splashView) {
+        SplashSubComponent splashSubComponent = applicationComponent.getSplashComponent(
+                new SplashModule(splashView));
         currentActivityComponent = splashSubComponent;
         return splashSubComponent;
     }

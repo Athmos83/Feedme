@@ -20,7 +20,6 @@ public class AppModule {
 
     public AppModule(Application application) {
         this.application = application;
-        initRealm();
     }
 
     @Provides
@@ -34,7 +33,7 @@ public class AppModule {
         Realm.init(application);
 
         RealmConfiguration config = new RealmConfiguration.Builder()
-                .name("Feedme.realm")
+                .name("feedme.realm")
                 .schemaVersion(1)
                 .deleteRealmIfMigrationNeeded()
                 .build();
