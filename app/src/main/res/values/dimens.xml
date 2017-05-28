@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <!--Texts-->
+
+    <dimen name="text_xsmall">10sp</dimen>
+    <dimen name="text_small">12dp</dimen>
+    <dimen name="text_meduim">14dp</dimen>
+    <dimen name="text_large">18sp</dimen>
+    <dimen name="text_xlarge">35sp</dimen>
+
+
+    <!-- Margins -->
+
+    <dimen name="margin_xsmall">4dp</dimen>
+    <dimen name="margin_small">8dp</dimen>
+    <dimen name="margin_medium">16dp</dimen>
+    <dimen name="margin_large">30dp</dimen>
+    <dimen name="margin_xlarge">100dp</dimen>
+
+    <!-- Radius -->
+
+    <dimen name="round_button_radius">10dp</dimen>
+    <dimen name="round_troubleshooting_radius">10dp</dimen>
+
+    <!-- Paddings -->
+
+    <dimen name="padding_small">8dp</dimen>
+    <dimen name="padding_medium">16dp</dimen>
+    <dimen name="padding_large">30dp</dimen>
+
+    <dimen name="appbar_padding_top">8dp</dimen>
+
+    <!--Splash custom dimens-->
+
+    <dimen name="splash_logo_size">150dp</dimen>
+
+    <!--common-->
+
+    <dimen name="edit_text_size">200dp</dimen>
+    <dimen name="button_text_size">120dp</dimen>
+
+</resources>

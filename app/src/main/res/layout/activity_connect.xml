@@ -1,15 +1,131 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fontAttribute="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    android:orientation="vertical"
+    android:weightSum="1">
 
-    <TextView
-        android:id="@+id/textView"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:textSize="35dp"
-        android:text="Connect" />
+        android:layout_height="0dp"
+        android:layout_weight="0.2"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="@dimen/splash_logo_size"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:src="@mipmap/logo_feedme" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.8"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/margin_medium"
+            android:background="@color/white">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="@dimen/padding_medium">
+
+                <com.feedme.feedme.common.view.TextViewStyled
+                    android:id="@+id/textView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:gravity="left"
+                    android:text="@string/register"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/text_large"
+                    fontAttribute:family="Raleway"
+                    fontAttribute:weight="Bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/margin_medium"
+                    android:paddingTop="@dimen/padding_medium">
+
+                    <com.feedme.feedme.common.view.EditTextStyled
+                        android:id="@+id/input_email"
+                        android:layout_width="@dimen/edit_text_size"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/email_hint"
+                        fontAttribute:family="Raleway"
+                        fontAttribute:weight="Regular" />
+
+                    <com.feedme.feedme.common.view.EditTextStyled
+                        android:id="@+id/editTextStyled"
+                        android:layout_width="@dimen/edit_text_size"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/password_hint"
+                        android:layout_marginTop="@dimen/margin_small"
+                        fontAttribute:family="Raleway"
+                        fontAttribute:weight="Regular" />
+
+                    <com.feedme.feedme.common.view.EditTextStyled
+                        android:layout_width="@dimen/edit_text_size"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_small"
+                        android:hint="@string/confirmation_hint"
+                        fontAttribute:family="Raleway"
+                        fontAttribute:weight="Regular" />
+
+                    <android.support.v7.widget.CardView
+                        android:layout_width="@dimen/button_text_size"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_large">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@color/colorPrimaryDark">
+
+                            <com.feedme.feedme.common.view.TextViewStyled
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:paddingTop="@dimen/padding_small"
+                                android:paddingBottom="@dimen/padding_small"
+                                android:gravity="center"
+                                android:text="@string/sent"
+                                android:textColor="@color/white"
+                                fontAttribute:family="Raleway"
+                                fontAttribute:weight="Bold" />
+
+                        </LinearLayout>
+                    </android.support.v7.widget.CardView>
+
+                </LinearLayout>
+
+                <com.feedme.feedme.common.view.TextViewStyled
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_large"
+                    android:text="@string/already_user"
+                    fontAttribute:family="Raleway"
+                    fontAttribute:weight="Regular"
+                    android:gravity="center" />
+
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+    </LinearLayout>
 
 </LinearLayout>

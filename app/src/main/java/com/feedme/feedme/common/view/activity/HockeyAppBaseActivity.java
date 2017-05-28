@@ -1,4 +1,4 @@
-package com.feedme.feedme.common.view;
+package com.feedme.feedme.common.view.activity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

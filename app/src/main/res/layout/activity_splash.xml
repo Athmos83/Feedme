@@ -1,15 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fontAttribute="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    android:weightSum="1"
+    android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/textView"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:textSize="35dp"
-        android:text="SplashScreen" />
+        android:layout_height="0dp"
+        android:layout_weight="0.9"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="@dimen/splash_logo_size"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@mipmap/logo_feedme" />
+
+        <com.feedme.feedme.common.view.TextViewStyled
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:gravity="center"
+            android:text="@string/app_name"
+            android:textColor="@color/light_grey"
+            android:textSize="@dimen/text_xlarge"
+            fontAttribute:family="Raleway"
+            fontAttribute:weight="SemiBold" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.1"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <com.feedme.feedme.common.view.TextViewStyled
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginRight="@dimen/margin_medium"
+            android:gravity="right"
+            android:text="@string/app_version"
+            android:textColor="@color/light_grey"
+            android:textSize="@dimen/text_small"
+            fontAttribute:family="Raleway"
+            fontAttribute:weight="Light" />
+    </LinearLayout>
 
 </LinearLayout>

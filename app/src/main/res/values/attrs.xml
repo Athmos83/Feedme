@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="StyledFont">
+        <attr name="family" format="string"/>
+        <attr name="weight" format="string"/>
+    </declare-styleable>
+</resources>

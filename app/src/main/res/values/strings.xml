@@ -1,3 +1,18 @@
 <resources>
+
+    <!--splash-->
+
     <string name="app_name">Feedme</string>
+    <string name="app_version">0.1.4</string>
+
+    <!--connexion-->
+
+    <string name="register">Créer un compte.</string>
+    <string name="email_hint">Email</string>
+    <string name="password_hint">Password</string>
+    <string name="confirmation_hint">Confirmation</string>
+    <string name="sent">Envoyer</string>
+    <string name="already_user">J\'ai déjà un compte</string>
+
+
 </resources>
