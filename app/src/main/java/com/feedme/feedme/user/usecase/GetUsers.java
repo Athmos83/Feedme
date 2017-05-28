@@ -20,13 +20,13 @@ public class GetUsers {
         this.dataRepository = dataRepository;
     }
 
-    public Observable<List<User>> execute() {
+    public Observable<User> execute() {
         return dataRepository.getUser();
     }
 
     //  TODO implementer dans ConnexionPresenter
     public interface GetUsersListener {
-        void onGetUsers(List<User> users);
+        void onGetUsers(User users);
     }
 
 }

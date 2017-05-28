@@ -12,6 +12,7 @@ import io.reactivex.Observable;
 
 public interface UserPersistenceContract {
 
-    Observable<List<User>> getUsers();
+    Observable<User> getUser();
 
+    Observable<User> addUser(final User user);
 }

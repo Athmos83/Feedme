@@ -34,11 +34,7 @@ public class ConnexionActivity extends Activity implements ConnexionPresenter.Vi
     }
 
     private void initViews() {
-    }
 
-    @Override
-    public Context getContext() {
-        return this.getContext();
     }
 
     @Override

@@ -6,6 +6,7 @@ import com.feedme.feedme.user.User;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Observer;
 
 import io.reactivex.Observable;
 import io.realm.Realm;
@@ -17,24 +18,43 @@ import io.realm.RealmResults;
 
 public class UserPersistence implements UserPersistenceContract {
 
-    private List<User> users = new ArrayList<>();
+    private User user = new User();
+
+    private User existingUser = new User();
 
     @Override
-    public Observable<List<User>> getUsers() {
-        Realm realm = Realm.getDefaultInstance();
-        realm.executeTransaction(new Realm.Transaction() {
-            @Override
-            public void execute(Realm realm) {
-                users = getAllUsers(realm);
-            }
-        });
-        return Observable.just(users);
+    public Observable<User> getUser() {
+
+        try {
+            Realm realm = Realm.getDefaultInstance();
+            realm.executeTransaction(new Realm.Transaction() {
+                @Override
+                public void execute(Realm realm) {
+                    RealmResults<User> result = realm.where(User.class).findAll();
+                user = realm.copyFromRealm(result).get(0);
+                }
+            });
+        }
+        finally {
+            if (user != null)
+                return Observable.just(user);
+        }
+        return null;
     }
 
-    private List<User> getAllUsers(Realm realm) {
-        RealmResults<User> result = realm.where(User.class).findAll();
-        return realm.copyFromRealm(result);
+    @Override
+    public Observable<User> addUser(final User user) {
+        try {
+          Realm realm = Realm.getDefaultInstance();
+            realm.executeTransaction(new Realm.Transaction() {
+                @Override
+                public void execute(Realm realm) {
+                    realm.copyToRealm(user);
+                }
+            });
+
+        } finally {
+            return Observable.just(user);
+        }
     }
-
-
 }

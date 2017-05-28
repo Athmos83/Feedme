@@ -18,13 +18,13 @@ public class ConnexionPresenter implements GetUsers.GetUsersListener {
     }
 
     @Override
-    public void onGetUsers(List<User> users) {
-
+    public void onGetUsers(User users) {
+        if (users == null) {
+            return;
+        }
     }
 
     public interface View {
-
-        Context getContext();
 
         void onUserFound();
 

@@ -20,9 +20,12 @@ public class DataRepository {
 
     }
 
-    public Observable<List<User>> getUser() {
+    public Observable<User> getUser() {
         return this.persistenceRepository.getUser();
     }
 
+    public Observable<User> addUser(User user) {
+        return this.persistenceRepository.addUser(user);
+    }
 
 }
