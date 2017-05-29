@@ -14,7 +14,17 @@ public class User extends RealmObject {
 
     private String userName;
     private String email;
+
+    private boolean tmpUser;
     private boolean isConnected;
+
+    public boolean isTmpUser() {
+        return tmpUser;
+    }
+
+    public void setTmpUser(boolean tmpUser) {
+        this.tmpUser = tmpUser;
+    }
 
     public boolean getIsConnected() {
         return isConnected;

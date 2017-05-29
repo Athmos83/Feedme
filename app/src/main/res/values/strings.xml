@@ -3,7 +3,7 @@
     <!--splash-->
 
     <string name="app_name">Feedme</string>
-    <string name="app_version">0.1.4</string>
+    <string name="app_version">0.1.5</string>
 
     <!--connexion-->
 
@@ -12,7 +12,7 @@
     <string name="password_hint">Password</string>
     <string name="confirmation_hint">Confirmation</string>
     <string name="sent">Envoyer</string>
+    <string name="skip">Skip ></string>
     <string name="already_user">J\'ai déjà un compte</string>
-
 
 </resources>

@@ -39,13 +39,17 @@ public class SplashPresenter implements GetUsersListener {
                 });
     }
 
+    public void addUser(User user) {
+    }
+
     // GetUsersListener method
 
     @Override
     public void onGetUsers(User user) {
-        if (!user.getIsConnected())
+        if (user.getIsConnected())
             splashView.navigateToMain();
-        splashView.navigateToConnexion();
+        else
+            splashView.navigateToConnexion();
     }
 
     // public interface

@@ -34,7 +34,7 @@ public class SplashActivity extends AppCompatActivity implements SplashPresenter
         unbinder = ButterKnife.bind(this);
 
         ((FeedmeBaseApplication) getApplicationContext())
-               .createSplashComponent(this).inject(this);
+                .createSplashComponent(this).inject(this);
         splashPresenter.init();
     }
 
@@ -57,4 +57,5 @@ public class SplashActivity extends AppCompatActivity implements SplashPresenter
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
+
 }

@@ -2,9 +2,6 @@ package com.feedme.feedme.user.usecase;
 
 import com.feedme.feedme.common.repository.DataRepository;
 import com.feedme.feedme.user.User;
-import com.feedme.feedme.user.repository.UserPersistence;
-
-import java.util.List;
 
 import io.reactivex.Observable;
 

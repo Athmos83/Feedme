@@ -1,12 +1,6 @@
 package com.feedme.feedme.user.repository;
 
-import android.content.Context;
-
 import com.feedme.feedme.user.User;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Observer;
 
 import io.reactivex.Observable;
 import io.realm.Realm;
@@ -31,11 +25,10 @@ public class UserPersistence implements UserPersistenceContract {
                 @Override
                 public void execute(Realm realm) {
                     RealmResults<User> result = realm.where(User.class).findAll();
-                user = realm.copyFromRealm(result).get(0);
+                    user = realm.copyFromRealm(result).get(0);
                 }
             });
-        }
-        finally {
+        } finally {
             if (user != null)
                 return Observable.just(user);
         }
@@ -45,7 +38,7 @@ public class UserPersistence implements UserPersistenceContract {
     @Override
     public Observable<User> addUser(final User user) {
         try {
-          Realm realm = Realm.getDefaultInstance();
+            Realm realm = Realm.getDefaultInstance();
             realm.executeTransaction(new Realm.Transaction() {
                 @Override
                 public void execute(Realm realm) {

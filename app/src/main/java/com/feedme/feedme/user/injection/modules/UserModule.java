@@ -16,12 +16,15 @@ import dagger.Provides;
 @Module
 public class UserModule {
 
-    @Provides @Singleton
-    AddUser providesAddUser(DataRepository dataRepository){
+    @Provides
+    @Singleton
+    AddUser providesAddUser(DataRepository dataRepository) {
         return new AddUser(dataRepository);
     }
-    @Provides @Singleton
-    GetUsers providesGetUser(DataRepository dataRepository){
+
+    @Provides
+    @Singleton
+    GetUsers providesGetUser(DataRepository dataRepository) {
         return new GetUsers(dataRepository);
     }
 }
