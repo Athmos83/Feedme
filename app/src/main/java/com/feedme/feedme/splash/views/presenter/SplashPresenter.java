@@ -1,25 +1,17 @@
 package com.feedme.feedme.splash.views.presenter;
 
-import com.feedme.feedme.user.User;
+import com.feedme.feedme.common.view.BasePresenter;
+import com.feedme.feedme.user.domain.model.User;
 import com.feedme.feedme.user.usecase.GetUsers;
-import com.feedme.feedme.user.usecase.GetUsers.GetUsersListener;
 
-import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.annotations.NonNull;
 import io.reactivex.functions.Consumer;
 
-/**
- * Created by Athmos on 26/05/2017.
- */
-
-public class SplashPresenter implements GetUsersListener {
-
-    private final SplashPresenter.View splashView;
+public class SplashPresenter extends BasePresenter {
 
     private final GetUsers getUsers;
 
-    public SplashPresenter(
-            SplashPresenter.View mainView, GetUsers getUsers) {
-        this.splashView = mainView;
+    public SplashPresenter(GetUsers getUsers) {
         this.getUsers = getUsers;
     }
 
@@ -30,13 +22,12 @@ public class SplashPresenter implements GetUsersListener {
     }
 
     public void getUsers() {
-        getUsers.execute().subscribeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Consumer<User>() {
-                    @Override
-                    public void accept(User user) throws Exception {
-                        onGetUsers(user);
-                    }
-                });
+        addSubscription(getUsers.subscribe(new Consumer<User>() {
+            @Override
+            public void accept(@NonNull User user) throws Exception {
+                onGetUsers(user);
+            }
+        }));
     }
 
     public void addUser(User user) {
@@ -44,12 +35,11 @@ public class SplashPresenter implements GetUsersListener {
 
     // GetUsersListener method
 
-    @Override
     public void onGetUsers(User user) {
-        if (user.getIsConnected())
-            splashView.navigateToMain();
+        if (user.getUserId() != null)
+            ((View) getView()).navigateToMain();
         else
-            splashView.navigateToConnexion();
+            ((View) getView()).navigateToConnexion();
     }
 
     // public interface

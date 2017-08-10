@@ -6,10 +6,12 @@ import android.os.Bundle;
 
 import com.feedme.feedme.FeedmeBaseApplication;
 import com.feedme.feedme.R;
+import com.feedme.feedme.common.domain.model.BaseView;
 import com.feedme.feedme.common.view.EditTextStyled;
+import com.feedme.feedme.connexion.injection.modules.ConnexionModule;
 import com.feedme.feedme.connexion.views.presenter.ConnexionPresenter;
-import com.feedme.feedme.main.MainActivity;
-import com.feedme.feedme.user.User;
+import com.feedme.feedme.main.views.activity.MainActivity;
+import com.feedme.feedme.user.domain.model.User;
 
 import javax.inject.Inject;
 
@@ -18,11 +20,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
 
-/**
- * Created by Athmos on 26/05/2017.
- */
-
-public class ConnexionActivity extends Activity implements ConnexionPresenter.View {
+public class ConnexionActivity extends Activity implements BaseView, ConnexionPresenter.View {
 
     private Unbinder unbinder;
     @BindView(R.id.email)
@@ -39,14 +37,24 @@ public class ConnexionActivity extends Activity implements ConnexionPresenter.Vi
 
         unbinder = ButterKnife.bind(this);
 
-        ((FeedmeBaseApplication) getApplicationContext())
-                .createConnexionComponent(this).inject(this);
+        ((FeedmeBaseApplication) getApplicationContext()).getApplicationComponent()
+                .getConnexionComponent(new ConnexionModule()).inject(this);
+        connexionPresenter.attachView(this);
     }
+
+    // connexionPresenter.View methods
 
     @Override
     public void onUserAdded() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
+    }
+
+    // BaseView methods
+
+    @Override
+    public void onInit() {
+
     }
 
     //  binded buttons
@@ -72,6 +80,5 @@ public class ConnexionActivity extends Activity implements ConnexionPresenter.Vi
         user.setTmpUser(true);
         connexionPresenter.addUser(user);
     }
-
 
 }

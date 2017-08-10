@@ -4,6 +4,7 @@ import com.feedme.feedme.common.injection.modules.AppModule;
 import com.feedme.feedme.common.injection.modules.DataModule;
 import com.feedme.feedme.connexion.injection.components.ConnexionSubComponent;
 import com.feedme.feedme.connexion.injection.modules.ConnexionModule;
+import com.feedme.feedme.feed.injection.module.FeedModule;
 import com.feedme.feedme.main.injection.components.MainSubComponent;
 import com.feedme.feedme.main.injection.modules.MainModule;
 import com.feedme.feedme.splash.injection.components.SplashSubComponent;
@@ -14,12 +15,9 @@ import javax.inject.Singleton;
 
 import dagger.Component;
 
-/**
- * Created by Athmos on 26/05/2017.
- */
-
 @Singleton
-@Component(modules = {AppModule.class, DataModule.class, UserModule.class})
+@Component(modules = {AppModule.class, DataModule.class,
+        UserModule.class, FeedModule.class})
 public interface ApplicationComponent {
 
     MainSubComponent getMainComponent(
@@ -29,7 +27,7 @@ public interface ApplicationComponent {
             ConnexionModule connexionModule);
 
     SplashSubComponent getSplashComponent(
-            SplashModule splashModulee);
+            SplashModule splashModule);
 
 
 }

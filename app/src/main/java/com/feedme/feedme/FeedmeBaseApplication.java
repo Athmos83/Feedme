@@ -8,7 +8,7 @@ import com.feedme.feedme.common.injection.components.BaseActivityComponent;
 import com.feedme.feedme.connexion.injection.components.ConnexionSubComponent;
 import com.feedme.feedme.connexion.injection.modules.ConnexionModule;
 import com.feedme.feedme.connexion.views.activity.ConnexionActivity;
-import com.feedme.feedme.main.MainActivity;
+import com.feedme.feedme.main.views.activity.MainActivity;
 import com.feedme.feedme.main.injection.components.MainSubComponent;
 import com.feedme.feedme.main.injection.modules.MainModule;
 import com.feedme.feedme.splash.injection.components.SplashSubComponent;
@@ -17,48 +17,24 @@ import com.feedme.feedme.splash.views.activity.SplashActivity;
 import com.feedme.feedme.splash.views.presenter.SplashPresenter;
 import com.feedme.feedme.user.injection.modules.UserModule;
 
-
-/**
- * Created by Athmos on 26/05/2017.
- */
-
 public abstract class FeedmeBaseApplication extends Application {
-    protected ApplicationComponent applicationComponent;
 
-    protected BaseActivityComponent currentActivityComponent;
+    protected ApplicationComponent applicationComponent;
 
     private Application.ActivityLifecycleCallbacks activityLifecycleCallbacks = new FeedmeActivityLifecycleCallbacks();
     public static boolean isInForeground;
 
+    public static FeedmeBaseApplication get(Application application) {
+        return ((FeedmeBaseApplication) application);
+    }
     @Override
     public void onCreate() {
         super.onCreate();
         registerActivityLifecycleCallbacks(activityLifecycleCallbacks);
     }
 
-    public ApplicationComponent getAplicationComponent() {
+    public ApplicationComponent getApplicationComponent() {
         return applicationComponent;
-    }
-
-    public MainSubComponent createMainComponent(MainActivity mainActivity) {
-        MainSubComponent mainSubComponent = applicationComponent.getMainComponent(
-                new MainModule(mainActivity));
-        currentActivityComponent = mainSubComponent;
-        return mainSubComponent;
-    }
-
-    public ConnexionSubComponent createConnexionComponent(ConnexionActivity connexionActivity) {
-        ConnexionSubComponent connexionSubComponent = applicationComponent.getConnexionComponent(
-                new ConnexionModule(connexionActivity));
-        currentActivityComponent = connexionSubComponent;
-        return connexionSubComponent;
-    }
-
-    public SplashSubComponent createSplashComponent(SplashPresenter.View splashView) {
-        SplashSubComponent splashSubComponent = applicationComponent.getSplashComponent(
-                new SplashModule(splashView));
-        currentActivityComponent = splashSubComponent;
-        return splashSubComponent;
     }
 
 }

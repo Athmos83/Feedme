@@ -6,8 +6,10 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.feedme.feedme.FeedmeBaseApplication;
 import com.feedme.feedme.R;
+import com.feedme.feedme.common.domain.model.BaseView;
 import com.feedme.feedme.connexion.views.activity.ConnexionActivity;
-import com.feedme.feedme.main.MainActivity;
+import com.feedme.feedme.main.views.activity.MainActivity;
+import com.feedme.feedme.splash.injection.modules.SplashModule;
 import com.feedme.feedme.splash.views.presenter.SplashPresenter;
 
 import javax.inject.Inject;
@@ -15,11 +17,7 @@ import javax.inject.Inject;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
-/**
- * Created by Athmos on 26/05/2017.
- */
-
-public class SplashActivity extends AppCompatActivity implements SplashPresenter.View {
+public class SplashActivity extends AppCompatActivity implements BaseView, SplashPresenter.View {
 
     @Inject
     SplashPresenter splashPresenter;
@@ -33,9 +31,10 @@ public class SplashActivity extends AppCompatActivity implements SplashPresenter
 
         unbinder = ButterKnife.bind(this);
 
-        ((FeedmeBaseApplication) getApplicationContext())
-                .createSplashComponent(this).inject(this);
-        splashPresenter.init();
+        ((FeedmeBaseApplication) getApplicationContext()).getApplicationComponent()
+                .getSplashComponent(new SplashModule()).inject(this);
+        splashPresenter.attachView(this);
+        onInit();
     }
 
     @Override
@@ -58,4 +57,15 @@ public class SplashActivity extends AppCompatActivity implements SplashPresenter
         startActivity(intent);
     }
 
+    // BaseView methods
+
+    @Override
+    public void onInit() {
+        splashPresenter.init();
+    }
+
+    @Override
+    public void onBackPressed() {
+        onDestroy();
+    }
 }

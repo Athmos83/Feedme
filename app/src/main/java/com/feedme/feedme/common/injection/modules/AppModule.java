@@ -9,10 +9,6 @@ import dagger.Provides;
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
 
-/**
- * Created by Athmos on 26/05/2017.
- */
-
 @Module
 public class AppModule {
 
@@ -28,6 +24,7 @@ public class AppModule {
     Application providesApplication() {
         return application;
     }
+
     // Private methods
 
     private void initRealm() {

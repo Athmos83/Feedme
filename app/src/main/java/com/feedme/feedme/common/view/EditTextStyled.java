@@ -9,10 +9,6 @@ import android.util.Log;
 
 import com.feedme.feedme.R;
 
-/**
- * Created by Athmos on 28/05/2017.
- */
-
 public class EditTextStyled extends AppCompatEditText {
     private static final String TAG = "EditTextStyled";
 

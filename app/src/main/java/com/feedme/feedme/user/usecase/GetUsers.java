@@ -1,29 +1,23 @@
 package com.feedme.feedme.user.usecase;
 
-import com.feedme.feedme.common.repository.DataRepository;
-import com.feedme.feedme.user.User;
+
+import com.feedme.feedme.common.domain.usecase.SingleUseCase;
+import com.feedme.feedme.user.domain.model.User;
+import com.feedme.feedme.user.repository.UserRepository;
 
 import io.reactivex.Observable;
+import io.reactivex.Single;
 
-/**
- * Created by Athmos on 26/05/2017.
- */
 
-public class GetUsers {
+public class GetUsers extends SingleUseCase<User> {
 
-    private final DataRepository dataRepository;
+    private final UserRepository userRepository;
 
-    public GetUsers(DataRepository dataRepository) {
-        this.dataRepository = dataRepository;
+    public GetUsers(UserRepository dataRepository) {
+        this.userRepository = dataRepository;
     }
 
-    public Observable<User> execute() {
-        return dataRepository.getUser();
+    public Single<User> execute() {
+        return userRepository.getUser();
     }
-
-    //  TODO implementer dans ConnexionPresenter
-    public interface GetUsersListener {
-        void onGetUsers(User users);
-    }
-
 }

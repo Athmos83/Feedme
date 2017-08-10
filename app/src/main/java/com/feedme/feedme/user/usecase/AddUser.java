@@ -1,7 +1,8 @@
 package com.feedme.feedme.user.usecase;
 
-import com.feedme.feedme.common.repository.DataRepository;
-import com.feedme.feedme.user.User;
+import com.feedme.feedme.common.domain.usecase.ObservableFromConsumerUseCase;
+import com.feedme.feedme.user.domain.model.User;
+import com.feedme.feedme.user.repository.UserRepository;
 
 import io.reactivex.Observable;
 
@@ -11,19 +12,18 @@ import io.reactivex.Observable;
 
 public class AddUser {
 
-    private final DataRepository dataRepository;
+    private final UserRepository userRepository;
+    private User user;
 
-    public AddUser(DataRepository dataRepository) {
-        this.dataRepository = dataRepository;
+    public AddUser(UserRepository userRepository) {
+        this.userRepository = userRepository;
     }
 
-    public Observable<User> execute(User user) {
-        return dataRepository.addUser(user);
+    public void setUser(User user) {
+        this.user = user;
     }
 
-    //  TODO implementer dans ConnexionPresenter
-    public interface AddUserListener {
-        void onAddUser(User user);
+    public Observable<User> execute() {
+        return userRepository.addUser(user);
     }
-
 }

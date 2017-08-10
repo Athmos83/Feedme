@@ -7,12 +7,9 @@ import com.feedme.feedme.splash.views.activity.SplashActivity;
 
 import dagger.Subcomponent;
 
-/**
- * Created by Athmos on 26/05/2017.
- */
-
 @PerActivity
 @Subcomponent(modules = {SplashModule.class})
-public interface SplashSubComponent extends BaseActivityComponent {
+public interface SplashSubComponent {
+
     void inject(SplashActivity splashActivity);
 }

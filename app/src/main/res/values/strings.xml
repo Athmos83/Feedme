@@ -7,12 +7,16 @@
 
     <!--connexion-->
 
-    <string name="register">Créer un compte.</string>
+    <string name="register">Sign up</string>
     <string name="email_hint">Email</string>
     <string name="password_hint">Password</string>
     <string name="confirmation_hint">Confirmation</string>
-    <string name="sent">Envoyer</string>
+    <string name="sent">Send</string>
     <string name="skip">Skip ></string>
-    <string name="already_user">J\'ai déjà un compte</string>
+    <string name="already_user">I aleready have an account</string>
+
+    <!--main-->
+    <string name="feed_title">Title</string>
+    <string name="feed_description">Description</string>
 
 </resources>

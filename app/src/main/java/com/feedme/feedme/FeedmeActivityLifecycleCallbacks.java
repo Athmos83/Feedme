@@ -7,10 +7,6 @@ import android.os.Bundle;
 import java.util.HashSet;
 import java.util.Set;
 
-/**
- * Created by thomas.mendez on 26/05/2017.
- */
-
 class FeedmeActivityLifecycleCallbacks implements Application.ActivityLifecycleCallbacks {
 
     private Set<String> startedActivities = new HashSet<>();

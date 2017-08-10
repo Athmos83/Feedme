@@ -1,13 +1,13 @@
-package com.feedme.feedme.user;
+package com.feedme.feedme.user.repository.model;
 
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
 /**
- * Created by Athmos on 26/05/2017.
+ * Created by Athmos on 17/07/2017.
  */
 
-public class User extends RealmObject {
+public class UserRealm extends RealmObject {
 
     @PrimaryKey
     private String userId;

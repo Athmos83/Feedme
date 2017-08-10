@@ -7,13 +7,9 @@ import com.feedme.feedme.connexion.views.activity.ConnexionActivity;
 
 import dagger.Subcomponent;
 
-/**
- * Created by Athmos on 26/05/2017.
- */
-
 @PerActivity
 @Subcomponent(modules = {ConnexionModule.class})
-public interface ConnexionSubComponent extends BaseActivityComponent {
+public interface ConnexionSubComponent {
 
     void inject(ConnexionActivity connexionActivity);
 }
